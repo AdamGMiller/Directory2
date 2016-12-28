@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PeopleService } from './people.service';
 import { Person } from './person';
 import { NgZone } from '@angular/core';
+import { PersonCardComponent } from './person-card/person-card.component';
 
 @Component({
   selector: 'app-root',
@@ -10,21 +11,20 @@ import { NgZone } from '@angular/core';
   providers: [PeopleService]
 })
 export class AppComponent {
-  title = 'People Searcher';
+  title = 'Directory Search';
 
-  public people: Person[];
+  public people: Person[] = [];
+  public pageNumber: number = 1;
+  public atEnd: boolean = false;
+  public loading: boolean = false;
+  public selectedPerson: Person = null;
 
   constructor(private _peopleService: PeopleService, lc: NgZone) {
-    this._peopleService.getPeople()
-      .subscribe(
-      people => {
-        console.log(people);
-        this.people = people;
-      },
-      error => alert(error));
+    this.loading = false;
+    this.getPeople();
 
+    // infinite scrolling
     window.onscroll = () => {
-      let status = "not reached";
       let windowHeight = "innerHeight" in window ? window.innerHeight
         : document.documentElement.offsetHeight;
       let body = document.body, html = document.documentElement;
@@ -33,19 +33,36 @@ export class AppComponent {
         html.scrollHeight, html.offsetHeight);
       let windowBottom = windowHeight + window.pageYOffset;
 
-      console.log(windowBottom + " " + docHeight);
-      if (windowBottom >= docHeight) {
-        console.log('bottom reached');
+      // if at bottom of page and more entries to load, then load more entries
+      if (windowBottom >= docHeight && this.atEnd == false) {
         lc.run(() => {
-          this._peopleService.getPeople()
-            .subscribe(
-            people => {
-              console.log(people);
-              this.people.push(...people);
-            },
-            error => alert(error));
+          this.getPeople();
         });
       }
     };
+  }
+
+  onSelect(person: Person) {
+    this.selectedPerson = person;
+    console.log(person);
+  }
+
+
+  // local method which calls people service, manages pagination
+  private getPeople() {
+    this.loading = true;
+    this._peopleService.getPeople(this.pageNumber)
+      .subscribe(
+      people => {
+        this.loading = false;
+        if (people.length == 0) {
+          console.log('no more entries');
+          this.atEnd == true;
+        } else {
+          this.pageNumber = this.pageNumber + 1;
+          this.people.push(...people);
+        }
+      },
+      error => alert(error));
   }
 }

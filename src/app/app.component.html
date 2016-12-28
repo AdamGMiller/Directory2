@@ -1,15 +1,14 @@
-<div class="pos-f-t">
-  <div class="collapse" id="navbar-header">
-    <div class="container-fluid bg-inverse p-1">
-      <h3>Collapsed content</h3>
-      <p>Toggleable via the navbar brand.</p>
-    </div>
-  </div>
-  <div class="navbar navbar-light bg-faded navbar-static-top">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header"
-      aria-expanded="false" aria-label="Toggle navigation"></button>
-  </div>
-</div>
+<nav class="navbar navbar-fixed-top navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">
+    <i class="fa fa-users fa-2x"></i> {{title}}
+  </a>
+  <form class="form-inline float-lg-right">
+    <input class="form-control" type="text" placeholder="Search">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </form>
+</nav>
+
+<person-editor [person]="selectedPerson" *ngIf="selectedPerson"></person-editor>
 
 <div class="container">
   <div class="col-xs-12 col-sm-9">
@@ -18,13 +17,14 @@
     </p>
     <div class="jumbotron">
       <h1>Hello, world!</h1>
-      <p>This is an example to show the potential of an offcanvas layout pattern in Bootstrap. Try some responsive-range viewport
-        sizes to see it in action.</p>
+      <p>Loading: {{loading.toString()}} AtEnd: {{pageNumber}}</p>
+      <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#personEditor">Open Modal</button>
     </div>
     <div class="row">
       <div *ngFor="let person of people; let i = index;">
-        <person-card [person]="person"></person-card>
+        <person-card [person]="person" (onSelect)="onSelect($event)">"</person-card>
       </div>
     </div>
+    <span *ngIf="loading"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span></span>
   </div>
 </div>

@@ -2,14 +2,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
-
 import { AppComponent } from './app.component';
 import { PersonCardComponent } from './person-card/person-card.component';
+import { PersonEditorComponent } from './person-editor/person-editor.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PersonCardComponent
+    PersonCardComponent,
+    PersonEditorComponent
   ],
   imports: [
     BrowserModule,
