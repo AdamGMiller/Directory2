@@ -12,7 +12,7 @@ export class PersonCardComponent {
   @Output() onSelect: EventEmitter<Person> = new EventEmitter<Person>();
 
   selectPerson() {
-    console.log("Emitting person " + this.person.FirstName);
+    console.log("Selecting person " + this.person.FirstName + " " + this.person.LastName);
     this.onSelect.emit(this.person)
   }
 }

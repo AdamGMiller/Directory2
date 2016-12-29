@@ -4,6 +4,7 @@ import { Person } from './person';
 import { NgZone } from '@angular/core';
 import { PersonCardComponent } from './person-card/person-card.component';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,6 +13,8 @@ import { PersonCardComponent } from './person-card/person-card.component';
 })
 export class AppComponent {
   title = 'Directory Search';
+
+  public date = new Date();
 
   public people: Person[] = [];
   public pageNumber: number = 1;
@@ -22,6 +25,7 @@ export class AppComponent {
   constructor(private _peopleService: PeopleService, lc: NgZone) {
     this.loading = false;
     this.getPeople();
+
 
     // infinite scrolling
     window.onscroll = () => {
@@ -44,7 +48,7 @@ export class AppComponent {
 
   onSelect(person: Person) {
     this.selectedPerson = person;
-    console.log(person);
+    console.log("Selected " + person.FirstName + " " + person.LastName);
   }
 
 

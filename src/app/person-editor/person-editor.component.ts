@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Person } from '../person';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'person-editor',
@@ -10,5 +11,4 @@ export class PersonEditorComponent {
 
   @Input()
   person: Person;
-
 }
