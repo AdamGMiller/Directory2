@@ -12,12 +12,12 @@ export class PeopleService {
 
   constructor(private http: Http) { }
 
-  getPeople(pageNumber: number) {
+  getPeople(pageNumber: number, searchString: string) {
     var search = new URLSearchParams();
     if (pageNumber) search.set('page', pageNumber.toString());
+    if (searchString) search.set('search', searchString.toString());
     console.log(pageNumber + ' ' + search);
     return this.http.get(this._url, { search })
       .map(responce => <Person[]>responce.json());
   }
-
 }

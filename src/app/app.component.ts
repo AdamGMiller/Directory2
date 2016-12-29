@@ -18,6 +18,7 @@ export class AppComponent {
 
   public people: Person[] = [];
   public pageNumber: number = 1;
+  public searchString: string = "";
   public atEnd: boolean = false;
   public loading: boolean = false;
   public selectedPerson: Person = null;
@@ -51,11 +52,25 @@ export class AppComponent {
     console.log("Selected " + person.FirstName + " " + person.LastName);
   }
 
+  private onSearch() {
+    this.pageNumber = 1;
+    this.people = [];
+    console.log("Searching for " + this.searchString);
+    this.getPeople();
+  }
+
+  private onClearSearch() {
+    this.pageNumber = 1;
+    this.people = [];
+    this.searchString = "";
+    console.log("Searching for " + this.searchString);
+    this.getPeople();
+  }
 
   // local method which calls people service, manages pagination
   private getPeople() {
     this.loading = true;
-    this._peopleService.getPeople(this.pageNumber)
+    this._peopleService.getPeople(this.pageNumber, this.searchString)
       .subscribe(
       people => {
         this.loading = false;

@@ -4,9 +4,10 @@
   </a>
   <form class="form-inline float-lg-right">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Search">
+      <input type="text" class="form-control" name="search" [(ngModel)]="searchString" placeholder="Search">
       <span class="input-group-btn">
-        <button class="btn btn-secondary" type="button">Go!</button>
+        <button class="btn btn-secondary" type="submit" (click)="onSearch($event)"><i class="fa fa-search"></i></button>
+        <button *ngIf="searchString" class="btn btn-secondary" type="submit" (click)="onClearSearch($event)"><i class="fa fa-close"></i></button>
       </span>
     </div>
   </form>
