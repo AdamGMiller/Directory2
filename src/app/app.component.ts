@@ -39,7 +39,7 @@ export class AppComponent {
       let windowBottom = windowHeight + window.pageYOffset;
 
       // if at bottom of page and more entries to load, then load more entries
-      if (windowBottom >= docHeight && this.atEnd == false) {
+      if (windowBottom >= docHeight && this.atEnd == false && this.loading == false) {
         lc.run(() => {
           this.getPeople();
         });
@@ -50,6 +50,18 @@ export class AppComponent {
   onSelect(person: Person) {
     this.selectedPerson = person;
     console.log("Selected " + person.FirstName + " " + person.LastName);
+  }
+
+  onAdd() {
+    this.selectedPerson = new Person();
+    console.log("Adding new person.");
+  }
+
+  onDelete(person: Person) {
+    console.log("Deleting " + person.FirstName + " " + person.LastName);
+    this._peopleService.deletePerson(person);
+    var index = this.people.indexOf(person);
+    this.people.splice(index, 1);
   }
 
   private onSearch() {
