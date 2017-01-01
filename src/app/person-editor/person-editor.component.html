@@ -27,8 +27,8 @@
           </div>
           <div class="form-group">
             <label for="Dob">Birthday</label>
-            <input type="date" class="form-control" id="Dob" [ngModel]="person.Dob | date:'y-MM-dd'" (ngModelChange)="person.Dob = $event"
-              #dob="ngModel" required name="Dob">
+            <input type="date" class="form-control" format="yyyy-mm-dd" min="1/1/1900" id="Dob" [ngModel]="person.Dob | date:'y-MM-dd'"
+              (ngModelChange)="person.Dob = $event" #dob="ngModel" required name="Dob">
             <div [hidden]="dob.valid || dob.pristine" class="alert alert-danger">
               Birthday is required
             </div>

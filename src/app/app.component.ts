@@ -4,7 +4,6 @@ import { Person } from './person';
 import { NgZone } from '@angular/core';
 import { PersonCardComponent } from './person-card/person-card.component';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -46,6 +45,14 @@ export class AppComponent {
       }
     };
   }
+
+  onClose(person: Person): void {
+    this.pageNumber = 1;
+    this.people = [];
+    console.log("Saved " + person.FirstName + " " + person.LastName + ".  Refreshing search");
+    this.getPeople();
+  }
+
 
   onSelect(person: Person) {
     this.selectedPerson = person;
