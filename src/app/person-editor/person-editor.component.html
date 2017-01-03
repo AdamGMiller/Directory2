@@ -6,7 +6,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><span *ngIf="person.personId">Edit Person</span> <span *ngIf="!person.personId">Add Person</span></h4>
+        <h4 class="modal-title"><span *ngIf="person.Id">Edit Person</span> <span *ngIf="!person.Id">Add Person</span></h4>
       </div>
       <div class="modal-body">
         <form (ngSubmit)="onSubmit()">
