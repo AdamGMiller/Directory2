@@ -6,6 +6,18 @@ export class Directory2Page {
   }
 
   getTitle() {
-    return element(by.css('h1')).getText();
+    return element(by.id('applicationTitle')).getText();
+  }
+
+  getSearch() {
+    return element(by.id('search'));
+  }
+
+  getCardCount() {
+    return element.all(by.css('.card')).count();
+  }
+
+  getCardTitle() {
+    return element(by.css('.card'));
   }
 }

@@ -23,12 +23,6 @@ export class PeopleService {
     return this.http.get(this._url, { search })
       .map(response => <Person[]>response.json());
   }
-  /*
-  getPeople(pageNumber: number, searchString: string): Observable<Person[]> {
-    return this.http.get(this._url)
-      .map(this.extractData)
-      .catch(this.handleError);
-  }*/
 
   addPerson(person: Person): Observable<Person> {
     console.log("Adding new " + person.FirstName + " " + person.LastName);
@@ -48,21 +42,6 @@ export class PeopleService {
       .map(this.extractData)
       .catch(this.handleError);
   }
-  /*
-  savePerson(person: Person) {
-    console.log("Saving " + person.FirstName + " " + person.LastName);
-    return this.http.put(this._url + person.Id, JSON.stringify(person), this.options)
-      .map(response => response.json())
-      .subscribe();
-  }
-
-
-    addPerson(person: Person) {
-      person.ActiveFlag = true;
-      console.log("Adding " + person.FirstName + " " + person.LastName);
-      return this.http.post(this._url, JSON.stringify(person), this.options).map((res: Response) => res.json())
-        .subscribe();
-    }*/
 
   deletePerson(person: Person) {
     console.log("Deleting " + person.FirstName + " " + person.LastName);
