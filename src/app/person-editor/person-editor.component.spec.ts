@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
 import { PersonEditorComponent } from './person-editor.component';
+import { PhotoUploadComponent } from '../photo-upload/photo-upload.component';
 import { FormsModule } from '@angular/forms';
 import { Person } from '../person';
 import { PeopleService } from '../people.service';
@@ -16,12 +17,13 @@ describe('PersonEditorComponent', () => {
   let person: Person = { Id: 1, FirstName: "Adam", LastName: "Miller", Photo: "0x", ActiveFlag: true, ConcurrencyToken: "", Dob: new Date(), Age: 1, Interests: "None" };
 
   var peopleServiceStub = {
-    addPerson(person: Person) { }
+    addPerson(person: Person) { },
+    savePerson(person: Person) { }
   };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PersonEditorComponent],
+      declarations: [PersonEditorComponent, PhotoUploadComponent],
       imports: [FormsModule, HttpModule],
       providers: [{ provide: PeopleService, useValue: peopleServiceStub }]
     }).compileComponents()

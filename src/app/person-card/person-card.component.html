@@ -10,7 +10,7 @@
     </div>
     <div class="card-footer text-muted">
       <button type="button" class="btn btn-primary btn-sm" (click)="selectPerson()" data-toggle="modal" data-target="#personEditor"><i class="fa fa-edit"></i> Edit</button>
-      <button type="button" class="btn btn-secondary btn-sm"><i class="fa fa-camera-retro"></i> Add Photo</button>
+      <photo-upload [person]="person"></photo-upload>
       <button type="button" class="btn btn-warning btn-sm float-xs-right" (click)="deletePerson()"><i class="fa fa-trash"></i> Delete</button>
     </div>
   </div>

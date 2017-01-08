@@ -3,6 +3,7 @@ import { PeopleService } from './people.service';
 import { Person } from './person';
 import { NgZone } from '@angular/core';
 import { PersonCardComponent } from './person-card/person-card.component';
+import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
 
 @Component({
   selector: 'app-root',

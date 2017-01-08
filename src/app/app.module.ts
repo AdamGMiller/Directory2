@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PersonCardComponent } from './person-card/person-card.component';
 import { PersonEditorComponent } from './person-editor/person-editor.component';
+import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PersonCardComponent,
-    PersonEditorComponent
+    PersonEditorComponent,
+    PhotoUploadComponent
   ],
   imports: [
     BrowserModule,

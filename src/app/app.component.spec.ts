@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { Person } from './person';
 import { PersonEditorComponent } from './person-editor/person-editor.component';
 import { PersonCardComponent } from './person-card/person-card.component';
+import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
 import { Http, Response, HttpModule } from '@angular/http'
 
 describe('AppComponent', () => {
@@ -19,7 +20,7 @@ describe('AppComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent, PersonEditorComponent, PersonCardComponent],
+      declarations: [AppComponent, PersonEditorComponent, PersonCardComponent, PhotoUploadComponent],
       imports: [FormsModule, HttpModule]
     }).compileComponents()
       .then(() => {

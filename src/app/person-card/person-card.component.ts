@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Person } from '../person';
+import { PhotoUploadComponent } from '../photo-upload/photo-upload.component';
 
 @Component({
   selector: 'person-card',
