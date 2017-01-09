@@ -19,7 +19,6 @@ export class PersonEditorComponent {
   onSubmit() {
     if (this.person.Id) {
       console.log("Saving " + this.person.FirstName + " " + this.person.LastName);
-      //console.log(this._peopleService.savePerson(this.person));
 
       this._peopleService.savePerson(this.person)
         .subscribe(
@@ -31,7 +30,6 @@ export class PersonEditorComponent {
       // default photo
       this.person.ActiveFlag = true;
       this.person.Photo = "R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
-      //console.log(this._peopleService.addPerson(this.person));
 
       this._peopleService.addPerson(this.person)
         .subscribe(
@@ -40,5 +38,19 @@ export class PersonEditorComponent {
         );
 
     }
+  }
+
+  onBlurBirthday(dob: any): void {
+    let e = dob.split('-');
+    let d = new Date(Date.UTC(e[0], e[1] - 1, e[2]));
+    d.setDate(d.getDate() + 1);
+    this.person.Dob = d;
+    this.person.Age = this.calculateAge(d);
+  }
+
+  calculateAge(birthday) { // birthday is a date
+    var ageDifMs = Date.now() - birthday.getTime();
+    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 }

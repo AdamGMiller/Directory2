@@ -25,14 +25,33 @@
               Last name is required
             </div>
           </div>
+          <!--
           <div class="form-group">
             <label for="Dob">Birthday</label>
-            <input type="date" class="form-control" format="yyyy-mm-dd" min="1/1/1900" id="Dob" [ngModel]="person.Dob | date:'y-MM-dd'"
+            <input type="text" class="form-control" format="yyyy-mm-dd" min="1/1/1900" id="Dob" [ngModel]="person.Dob | date:'MM/dd/y'"
               (ngModelChange)="person.Dob = $event" #dob="ngModel" required name="Dob">
             <div [hidden]="dob.valid || dob.pristine" class="alert alert-danger">
               Birthday is required
             </div>
           </div>
+
+          format="yyyy-mm-dd" min="1/1/1900" id="Dob" [ngModel]="person.Dob | date:'y-MM-dd'"
+
+var someDate = new Date();
+var numberOfDaysToAdd = 6;
+someDate.setDate(someDate.getDate() + numberOfDaysToAdd);   
+
+(blur)="person.Dob = dob.value.setDate(dob.value.getDate() + 1)" #dob="ngModel" required name="Dob">        
+-->
+          <div class="form-group">
+            <label for="Dob">Birthday</label>
+            <input type="date" class="form-control" format="yyyy-mm-dd" min="1/1/1900" id="Dob" [ngModel]="person.Dob | date:'y-MM-dd'"
+              (blur)="onBlurBirthday(dob.value)" #dob="ngModel" required name="Dob">
+            <div [hidden]="dob.valid || dob.pristine" class="alert alert-danger">
+              Birthday is required
+            </div>
+          </div>
+
           <div class="form-group">
             <label for="Interests">Interests</label>
             <textarea class="form-control" id="Interests" name="Interests" [(ngModel)]="person.Interests" rows="3"></textarea>
