@@ -36,7 +36,6 @@ export class PersonEditorComponent {
         person => this.onClose.emit(person)
         //error =>  this.errorMessage = <any>error
         );
-
     }
   }
 
