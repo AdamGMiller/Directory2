@@ -38,9 +38,15 @@ describe('PersonService', () => {
 
   it('returns a list of people', async(inject([MockBackend, PeopleService], (backend: MockBackend, service) => {
     let people = [
-      { Id: 1, FirstName: "Adam", LastName: "Miller", Photo: "0x", ActiveFlag: true, ConcurrencyToken: "", Dob: new Date(), Age: 1, Interests: "None" },
-      { Id: 2, FirstName: "Sally", LastName: "Smith", Photo: "0x", ActiveFlag: true, ConcurrencyToken: "", Dob: new Date(), Age: 1, Interests: "None" }
-    ]
+      {
+        Id: 1, FirstName: 'Adam', LastName: 'Miller', Photo: '0x', ActiveFlag: true,
+        ConcurrencyToken: '', Dob: new Date(), Age: 1, Interests: 'None'
+      },
+      {
+        Id: 2, FirstName: 'Sally', LastName: 'Smith', Photo: '0x', ActiveFlag: true,
+        ConcurrencyToken: '', Dob: new Date(), Age: 1, Interests: 'None'
+      }
+    ];
     backend.connections.subscribe(
       (connection: MockConnection) => {
         connection.mockRespond(new Response(
@@ -50,9 +56,9 @@ describe('PersonService', () => {
       });
 
     service.getPeople()
-      .subscribe(people => {
-        expect(people.length).toBeDefined();
-        expect(people.length).toBe(2);
+      .subscribe(p => {
+        expect(p.length).toBeDefined();
+        expect(p.length).toBe(2);
       });
   })));
 

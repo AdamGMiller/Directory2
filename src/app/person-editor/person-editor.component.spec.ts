@@ -8,17 +8,20 @@ import { PhotoUploadComponent } from '../photo-upload/photo-upload.component';
 import { FormsModule } from '@angular/forms';
 import { Person } from '../person';
 import { PeopleService } from '../people.service';
-import { Http, Response, HttpModule } from '@angular/http'
+import { Http, Response, HttpModule } from '@angular/http';
 
 
 describe('PersonEditorComponent', () => {
   let component: PersonEditorComponent;
   let fixture: ComponentFixture<PersonEditorComponent>;
-  let person: Person = { Id: 1, FirstName: "Adam", LastName: "Miller", Photo: "0x", ActiveFlag: true, ConcurrencyToken: "", Dob: new Date(), Age: 1, Interests: "None" };
+  let person: Person = {
+    Id: 1, FirstName: 'Adam', LastName: 'Miller', Photo: '0x', ActiveFlag: true,
+    ConcurrencyToken: '', Dob: new Date(), Age: 1, Interests: 'None'
+  };
 
-  var peopleServiceStub = {
-    addPerson(person: Person) { },
-    savePerson(person: Person) { }
+  let peopleServiceStub = {
+    addPerson(p: Person) { },
+    savePerson(p: Person) { }
   };
 
   beforeEach(async(() => {
@@ -30,7 +33,7 @@ describe('PersonEditorComponent', () => {
       .then(() => {
         fixture = TestBed.createComponent(PersonEditorComponent);
         component = fixture.componentInstance;
-      })
+      });
   }));
 
   it('should create', () => {

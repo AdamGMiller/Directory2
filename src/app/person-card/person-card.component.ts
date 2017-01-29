@@ -3,7 +3,7 @@ import { Person } from '../person';
 import { PhotoUploadComponent } from '../photo-upload/photo-upload.component';
 
 @Component({
-  selector: 'person-card',
+  selector: 'app-person-card',
   templateUrl: './person-card.component.html',
   styleUrls: ['./person-card.component.css']
 })
@@ -14,12 +14,12 @@ export class PersonCardComponent {
   @Output() onDelete: EventEmitter<Person> = new EventEmitter<Person>();
 
   selectPerson() {
-    console.log("Selecting person " + this.person.FirstName + " " + this.person.LastName);
-    this.onSelect.emit(this.person)
+    console.log('Selecting person ' + this.person.FirstName + ' ' + this.person.LastName);
+    this.onSelect.emit(this.person);
   }
 
   deletePerson() {
-    console.log("Deleting person " + this.person.FirstName + " " + this.person.LastName);
-    this.onDelete.emit(this.person)
+    console.log('Deleting person ' + this.person.FirstName + ' ' + this.person.LastName);
+    this.onDelete.emit(this.person);
   }
 }

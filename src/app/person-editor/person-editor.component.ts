@@ -3,7 +3,7 @@ import { Person } from '../person';
 import { PeopleService } from '../people.service';
 
 @Component({
-  selector: 'person-editor',
+  selector: 'app-person-editor',
   templateUrl: './person-editor.component.html',
   styleUrls: ['./person-editor.component.css'],
   providers: [PeopleService]
@@ -18,23 +18,23 @@ export class PersonEditorComponent {
 
   onSubmit() {
     if (this.person.Id) {
-      console.log("Saving " + this.person.FirstName + " " + this.person.LastName);
+      console.log('Saving ' + this.person.FirstName + ' ' + this.person.LastName);
 
       this._peopleService.savePerson(this.person)
         .subscribe(
         person => this.onClose.emit(person)
-        //error =>  this.errorMessage = <any>error
+        // error =>  this.errorMessage = <any>error
         );
     } else {
-      console.log("Adding " + this.person.FirstName + " " + this.person.LastName);
+      console.log('Adding ' + this.person.FirstName + ' ' + this.person.LastName);
       // default photo
       this.person.ActiveFlag = true;
-      this.person.Photo = "R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==";
+      this.person.Photo = 'R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
 
       this._peopleService.addPerson(this.person)
         .subscribe(
         person => this.onClose.emit(person)
-        //error =>  this.errorMessage = <any>error
+        // error =>  this.errorMessage = <any>error
         );
     }
   }
@@ -48,8 +48,8 @@ export class PersonEditorComponent {
   }
 
   calculateAge(birthday) { // birthday is a date
-    var ageDifMs = Date.now() - birthday.getTime();
-    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    let ageDifMs = Date.now() - birthday.getTime();
+    let ageDate = new Date(ageDifMs); // miliseconds from epoch
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 }

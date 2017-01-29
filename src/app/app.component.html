@@ -17,7 +17,7 @@
 </nav>
 
 
-<person-editor [person]="selectedPerson" (onClose)="onClose($event)" *ngIf="selectedPerson"></person-editor>
+<app-person-editor [person]="selectedPerson" (onClose)="onClose($event)" *ngIf="selectedPerson"></app-person-editor>
 
 <div class="container">
   <div class="col-xs-12 col-sm-9">
@@ -26,7 +26,7 @@
     </p>
     <div class="row">
       <div *ngFor="let person of people; let i = index;">
-        <person-card [person]="person" (onSelect)="onSelect($event)" (onDelete)="onDelete($event)"></person-card>
+        <app-person-card [person]="person" (onSelect)="onSelect($event)" (onDelete)="onDelete($event)"></app-person-card>
       </div>
     </div>
     <span *ngIf="loading"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i><span class="sr-only">Loading...</span></span>

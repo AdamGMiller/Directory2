@@ -17,10 +17,10 @@ export class AppComponent {
   public date = new Date();
 
   public people: Person[] = [];
-  public pageNumber: number = 1;
-  public searchString: string = "";
-  public atEnd: boolean = false;
-  public loading: boolean = false;
+  public pageNumber = 1;
+  public searchString = '';
+  public atEnd = false;
+  public loading = false;
   public selectedPerson: Person = null;
 
   constructor(private _peopleService: PeopleService, lc: NgZone) {
@@ -30,7 +30,7 @@ export class AppComponent {
 
     // infinite scrolling
     window.onscroll = () => {
-      let windowHeight = "innerHeight" in window ? window.innerHeight
+      let windowHeight = 'innerHeight' in window ? window.innerHeight
         : document.documentElement.offsetHeight;
       let body = document.body, html = document.documentElement;
       let docHeight = Math.max(body.scrollHeight,
@@ -39,7 +39,7 @@ export class AppComponent {
       let windowBottom = windowHeight + window.pageYOffset;
 
       // if at bottom of page and more entries to load, then load more entries
-      if (windowBottom >= docHeight && this.atEnd == false && this.loading == false) {
+      if (windowBottom >= docHeight && this.atEnd === false && this.loading === false) {
         lc.run(() => {
           this.getPeople();
         });
@@ -50,40 +50,40 @@ export class AppComponent {
   onClose(person: Person): void {
     this.pageNumber = 1;
     this.people = [];
-    console.log("Saved " + person.FirstName + " " + person.LastName + ".  Refreshing search");
+    console.log('Saved ' + person.FirstName + ' ' + person.LastName + '.  Refreshing search');
     this.getPeople();
   }
 
 
   onSelect(person: Person) {
     this.selectedPerson = person;
-    console.log("Selected " + person.FirstName + " " + person.LastName);
+    console.log('Selected ' + person.FirstName + ' ' + person.LastName);
   }
 
   onAdd() {
     this.selectedPerson = new Person();
-    console.log("Adding new person.");
+    console.log('Adding new person.');
   }
 
   onDelete(person: Person) {
-    console.log("Deleting " + person.FirstName + " " + person.LastName);
+    console.log('Deleting ' + person.FirstName + ' ' + person.LastName);
     this._peopleService.deletePerson(person);
-    var index = this.people.indexOf(person);
+    let index = this.people.indexOf(person);
     this.people.splice(index, 1);
   }
 
-  private onSearch() {
+  public onSearch() {
     this.pageNumber = 1;
     this.people = [];
-    console.log("Searching for " + this.searchString);
+    console.log('Searching for ' + this.searchString);
     this.getPeople();
   }
 
-  private onClearSearch() {
+  public onClearSearch() {
     this.pageNumber = 1;
     this.people = [];
-    this.searchString = "";
-    console.log("Searching for " + this.searchString);
+    this.searchString = '';
+    console.log('Searching for ' + this.searchString);
     this.getPeople();
   }
 
@@ -94,9 +94,9 @@ export class AppComponent {
       .subscribe(
       people => {
         this.loading = false;
-        if (people.length == 0) {
+        if (people.length === 0) {
+          this.atEnd = true;
           console.log('no more entries');
-          this.atEnd == true;
         } else {
           this.pageNumber = this.pageNumber + 1;
           this.people.push(...people);
