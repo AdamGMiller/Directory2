@@ -53,21 +53,20 @@ describe('PersonCardComponent', () => {
   });
 
   it('should return ...', inject([PeopleService], service => {
-    service.deletePerson();
+    let results = service.deletePerson();
   }));
 
   it('should do something on delete click', () => {
+    // Arrange
     spyOn(comp, 'deletePerson');
-    // first round of change detection
     fixture.detectChanges();
-
-    // get ahold of the input
     let input = fixture.debugElement.query(By.css('#deletePerson'));
     let inputElement = input.nativeElement;
 
-    // set input value
+    // Act
     inputElement.dispatchEvent(new Event('click'));
 
+    // Assert
     expect(comp.deletePerson).toHaveBeenCalled();
   });
 
