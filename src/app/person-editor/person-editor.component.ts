@@ -40,16 +40,16 @@ export class PersonEditorComponent {
   }
 
   onBlurBirthday(dob: any): void {
-    let e = dob.split('-');
-    let d = new Date(Date.UTC(e[0], e[1] - 1, e[2]));
+    const e = dob.split('-');
+    const d = new Date(Date.UTC(e[0], e[1] - 1, e[2]));
     d.setDate(d.getDate() + 1);
     this.person.Dob = d;
     this.person.Age = this.calculateAge(d);
   }
 
   calculateAge(birthday) { // birthday is a date
-    let ageDifMs = Date.now() - birthday.getTime();
-    let ageDate = new Date(ageDifMs); // miliseconds from epoch
+    const ageDifMs = Date.now() - birthday.getTime();
+    const ageDate = new Date(ageDifMs); // miliseconds from epoch
     return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 }

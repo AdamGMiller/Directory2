@@ -19,7 +19,7 @@ describe('directory2 App', function () {
 
   it('should enter search', () => {
     page.navigateTo();
-    var el = page.getSearch();
+    const el = page.getSearch();
     el.click();
     el.sendKeys('Adam\n');
     expect(el.getAttribute('value')).toEqual('Adam');
@@ -27,7 +27,7 @@ describe('directory2 App', function () {
 
   it('should find Adam Miller', () => {
     page.navigateTo();
-    var el = page.getSearch();
+    const el = page.getSearch();
     el.click();
     el.sendKeys('Adam Miller\n');
     expect(page.getCardCount()).toBeGreaterThan(0);

@@ -14,12 +14,12 @@ import { Http, Response, HttpModule } from '@angular/http';
 describe('PersonEditorComponent', () => {
   let component: PersonEditorComponent;
   let fixture: ComponentFixture<PersonEditorComponent>;
-  let person: Person = {
+  const person: Person = {
     Id: 1, FirstName: 'Adam', LastName: 'Miller', Photo: '0x', ActiveFlag: true,
     ConcurrencyToken: '', Dob: new Date(), Age: 1, Interests: 'None'
   };
 
-  let peopleServiceStub = {
+  const peopleServiceStub = {
     addPerson(p: Person) { },
     savePerson(p: Person) { }
   };

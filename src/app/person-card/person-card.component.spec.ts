@@ -13,13 +13,13 @@ import { Http, Response, HttpModule } from '@angular/http';
 describe('PersonCardComponent', () => {
   let comp: PersonCardComponent;
   let fixture: ComponentFixture<PersonCardComponent>;
-  let person: Person = {
+  const person: Person = {
     Id: 1, FirstName: 'Adam', LastName: 'Miller', Photo: '0x', ActiveFlag: true,
     ConcurrencyToken: '', Dob: new Date(), Age: 1, Interests: 'None'
   };
   let firstNameEl;
 
-  let peopleServiceStub = {
+  const peopleServiceStub = {
     deletePerson(p: Person) { }
   };
 
@@ -53,15 +53,15 @@ describe('PersonCardComponent', () => {
   });
 
   it('should return ...', inject([PeopleService], service => {
-    let results = service.deletePerson();
+    const results = service.deletePerson();
   }));
 
   it('should do something on delete click', () => {
     // Arrange
     spyOn(comp, 'deletePerson');
     fixture.detectChanges();
-    let input = fixture.debugElement.query(By.css('#deletePerson'));
-    let inputElement = input.nativeElement;
+    const input = fixture.debugElement.query(By.css('#deletePerson'));
+    const inputElement = input.nativeElement;
 
     // Act
     inputElement.dispatchEvent(new Event('click'));

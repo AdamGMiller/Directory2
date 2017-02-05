@@ -34,12 +34,12 @@ export class PhotoUploadComponent {
 
   readFile(file) {
     // Create the file reader
-    let reader = new FileReader();
+    const reader = new FileReader();
 
     // Start reading this file
     this.getFile(file, reader, (result) => {
       // Create an img element and add the image file data to it
-      let img = document.createElement('img');
+      const img = document.createElement('img');
       img.src = result;
 
       // Send this img to the resize function (and wait for callback)
@@ -47,7 +47,7 @@ export class PhotoUploadComponent {
 
         // Set person photo
         this.file_src = resized_jpeg;
-        let imageData = resized_jpeg.replace('data:image/jpeg;base64,', '');
+        const imageData = resized_jpeg.replace('data:image/jpeg;base64,', '');
         this.person.Photo = imageData;
 
         console.log('Saving ' + this.person.FirstName + ' ' + this.person.LastName);
@@ -86,18 +86,18 @@ export class PhotoUploadComponent {
       }
 
       // create a canvas object
-      let canvas = document.createElement('canvas');
+      const canvas = document.createElement('canvas');
 
       // Set the canvas to the new calculated dimensions
       canvas.width = width;
       canvas.height = height;
-      let ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext('2d');
 
       ctx.drawImage(img, 0, 0, width, height);
 
       // Get this encoded as a jpeg
       // IMPORTANT: 'jpeg' NOT 'jpg'
-      let dataUrl = canvas.toDataURL('image/jpeg');
+      const dataUrl = canvas.toDataURL('image/jpeg');
 
       // callback with the results
       callback(dataUrl, img.src.length, dataUrl.length);

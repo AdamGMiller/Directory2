@@ -14,9 +14,7 @@ describe('AppComponent', () => {
 
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
-  let de: DebugElement;
-  let el: HTMLElement;
-  let person: Person = {
+  const person: Person = {
     Id: 1, FirstName: 'Adam', LastName: 'Miller', Photo: '0x', ActiveFlag: true,
     ConcurrencyToken: '', Dob: new Date(), Age: 1, Interests: 'None'
   };
@@ -33,12 +31,12 @@ describe('AppComponent', () => {
   }));
 
   it('should create the app', async(() => {
-    let app = fixture.debugElement.componentInstance;
+    const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
 
   it(`should have as title 'Directory Search'`, async(() => {
-    let app = fixture.debugElement.componentInstance;
+    const app = fixture.debugElement.componentInstance;
     expect(app.title).toEqual('Directory Search');
   }));
 

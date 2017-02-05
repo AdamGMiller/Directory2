@@ -30,13 +30,13 @@ export class AppComponent {
 
     // infinite scrolling
     window.onscroll = () => {
-      let windowHeight = 'innerHeight' in window ? window.innerHeight
+      const windowHeight = 'innerHeight' in window ? window.innerHeight
         : document.documentElement.offsetHeight;
-      let body = document.body, html = document.documentElement;
-      let docHeight = Math.max(body.scrollHeight,
+      const body = document.body, html = document.documentElement;
+      const docHeight = Math.max(body.scrollHeight,
         body.offsetHeight, html.clientHeight,
         html.scrollHeight, html.offsetHeight);
-      let windowBottom = windowHeight + window.pageYOffset;
+      const windowBottom = windowHeight + window.pageYOffset;
 
       // if at bottom of page and more entries to load, then load more entries
       if (windowBottom >= docHeight && this.atEnd === false && this.loading === false) {
@@ -68,7 +68,7 @@ export class AppComponent {
   onDelete(person: Person) {
     console.log('Deleting ' + person.FirstName + ' ' + person.LastName);
     this._peopleService.deletePerson(person);
-    let index = this.people.indexOf(person);
+    const index = this.people.indexOf(person);
     this.people.splice(index, 1);
   }
 

@@ -16,7 +16,7 @@ export class PeopleService {
   constructor(private http: Http) { }
 
   getPeople(pageNumber: number, searchString: string) {
-    let search = new URLSearchParams();
+    const search = new URLSearchParams();
     if (pageNumber) { search.set('page', pageNumber.toString()); }
     if (searchString) { search.set('search', searchString.toString()); }
     console.log(pageNumber + ' ' + search);
@@ -32,7 +32,7 @@ export class PeopleService {
   }
 
   private extractData(res: Response) {
-    let body = res.json();
+    const body = res.json();
     return body.data || {};
   }
 
