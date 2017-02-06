@@ -1,4 +1,5 @@
 import { Directory2Page } from './app.po';
+import { browser, element, by } from 'protractor';
 
 describe('directory2 App', function () {
   let page: Directory2Page;
@@ -15,6 +16,10 @@ describe('directory2 App', function () {
   it('should display 10 people by default', () => {
     page.navigateTo();
     expect(page.getCardCount()).toEqual(10);
+  });
+
+  it('should have search input', () => {
+    expect(page.getSearch()).toBeDefined();
   });
 
   it('should enter search', () => {
