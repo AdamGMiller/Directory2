@@ -6,7 +6,12 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { PersonCardComponent } from './person-card/person-card.component';
 import { PersonEditorComponent } from './person-editor/person-editor.component';
 import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
+import { NgbModule, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { CustomNgbDateParserFormatter } from './custom-ngbDateParserFormatter'
 
+export function customNgbDateParserFormatter() {
+  return new CustomNgbDateParserFormatter('longDate');
+}
 
 @NgModule({
   declarations: [
@@ -19,12 +24,15 @@ import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    JsonpModule
+    JsonpModule,
+    NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [{ provide: NgbDateParserFormatter, useFactory: customNgbDateParserFormatter }],
   bootstrap: [AppComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA
   ],
 })
 export class AppModule { }
+
+

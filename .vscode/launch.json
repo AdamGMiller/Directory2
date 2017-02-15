@@ -31,8 +31,22 @@
             "type": "node",
             "request": "attach",
             "name": "Attach to Process",
-            "port": 5858,
+            "port": 4200,
             "outFiles": []
+        },
+        {
+            "name": "Launch",
+            "type": "chrome",
+            "request": "launch",
+            "diagnosticLogging": true,
+            "url": "http://localhost:4200", //Change to whatever you homepage is
+            "runtimeArgs": [
+                "--new-window", //Open in new window
+                "--user-data-dir=/home/user", //Can be any directory. Makes chrome load in a different directory so that it opens in a new instance.
+                "--remote-debugging-port=9222" //Open in port 9222 (standard chrome debug port)
+            ],
+            "webRoot": "${workspaceRoot}/src/", //The directory that contains js, ts and map files
+            "sourceMaps": true
         }
     ]
 }
