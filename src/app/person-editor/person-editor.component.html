@@ -9,7 +9,7 @@
         <h4 class="modal-title"><span *ngIf="person.Id">Edit Person</span> <span *ngIf="!person.Id">Add Person</span></h4>
       </div>
       <div class="modal-body">
-        <form (ngSubmit)="onSubmit()" #personForm="ngForm">
+        <form (ngSubmit)="onSubmit();" #personForm="ngForm">
           <div class="form-group">
             <label for="FirstName">First Name</label>
             <input type="text" class="form-control" name="FirstName" id="FirstName" [(ngModel)]="person.FirstName" #firstName="ngModel"
@@ -28,7 +28,7 @@
           <div class="form-group">
             <label for="Dob">Birthday</label>
             <div class="input-group">
-              <input class="form-control" name="dp" [(ngModel)]="model" [minDate]="minDate" [minDate]="maxDate" (ngModelChange)="onSelectDate($event)"
+              <input class="form-control" name="dp" [(ngModel)]="model" [attr.minDate]="minDate" [attr.minDate]="maxDate" (ngModelChange)="onSelectDate($event)"
                 ngbDatepicker #d="ngbDatepicker" required>
                 <div class="input-group-addon" (click)="d.toggle()">
                   <i class="fa fa-calendar"></i>

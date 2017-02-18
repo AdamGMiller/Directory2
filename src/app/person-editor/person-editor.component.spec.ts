@@ -9,7 +9,12 @@ import { FormsModule } from '@angular/forms';
 import { Person } from '../person';
 import { PeopleService } from '../people.service';
 import { Http, Response, HttpModule } from '@angular/http';
+import { NgbModule, NgbDatepicker, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { CustomNgbDateParserFormatter } from '../custom-ngbDateParserFormatter';
 
+export function customNgbDateParserFormatter() {
+  return new CustomNgbDateParserFormatter('longDate');
+}
 
 describe('PersonEditorComponent', () => {
   let component: PersonEditorComponent;
@@ -27,8 +32,9 @@ describe('PersonEditorComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [PersonEditorComponent, PhotoUploadComponent],
-      imports: [FormsModule, HttpModule],
-      providers: [{ provide: PeopleService, useValue: peopleServiceStub }]
+      imports: [FormsModule, HttpModule, NgbModule.forRoot()],
+      providers: [{ provide: PeopleService, useValue: peopleServiceStub },
+      { provide: NgbDateParserFormatter, useFactory: customNgbDateParserFormatter }]
     }).compileComponents()
       .then(() => {
         fixture = TestBed.createComponent(PersonEditorComponent);

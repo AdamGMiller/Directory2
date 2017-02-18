@@ -9,6 +9,8 @@ import { PersonEditorComponent } from './person-editor/person-editor.component';
 import { PersonCardComponent } from './person-card/person-card.component';
 import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
 import { Http, Response, HttpModule } from '@angular/http';
+import { NgbModule, NgbDatepicker, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
+import { CustomNgbDateParserFormatter } from './custom-ngbDateParserFormatter';
 
 describe('AppComponent', () => {
 
@@ -22,7 +24,7 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AppComponent, PersonEditorComponent, PersonCardComponent, PhotoUploadComponent],
-      imports: [FormsModule, HttpModule]
+      imports: [FormsModule, HttpModule, NgbModule]
     }).compileComponents()
       .then(() => {
         fixture = TestBed.createComponent(AppComponent);

@@ -1,4 +1,5 @@
 import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+
 import { Person } from '../person';
 import { PeopleService } from '../people.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -10,6 +11,7 @@ import { NgbDateParserFormatter, NgbDateStruct } from '@ng-bootstrap/ng-bootstra
   styleUrls: ['./person-editor.component.css'],
   providers: [PeopleService]
 })
+
 export class PersonEditorComponent implements OnInit, OnChanges {
 
   model: NgbDateStruct;
@@ -36,6 +38,9 @@ export class PersonEditorComponent implements OnInit, OnChanges {
   }
 
   onSubmit() {
+    // set form fields as pristine
+    // this.personForm.reset();
+
     if (this.person.Id) {
       console.log('Saving ' + this.person.FirstName + ' ' + this.person.LastName);
 

@@ -37,7 +37,7 @@ describe('PersonCardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PersonCardComponent);
     comp = fixture.componentInstance;
-    firstNameEl = fixture.debugElement.query(By.css('#firstName')); // find hero element
+    firstNameEl = fixture.debugElement.query(By.css('#firstName')); // find element
 
     comp.person = person;
     fixture.detectChanges(); // trigger initial data binding

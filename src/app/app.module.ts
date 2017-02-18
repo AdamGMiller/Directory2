@@ -7,7 +7,7 @@ import { PersonCardComponent } from './person-card/person-card.component';
 import { PersonEditorComponent } from './person-editor/person-editor.component';
 import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
 import { NgbModule, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
-import { CustomNgbDateParserFormatter } from './custom-ngbDateParserFormatter'
+import { CustomNgbDateParserFormatter } from './custom-ngbDateParserFormatter';
 
 export function customNgbDateParserFormatter() {
   return new CustomNgbDateParserFormatter('longDate');
